@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:notetastic/screens/blank_screen.dart';
+import 'package:notetastic/screens/note_screen.dart';
 
 import './screens/home_screen.dart';
 
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       home: HomeScreen(),
       routes: {
         "/hs": (context) => HomeScreen(),
-        "/test": (context) => BlankScreen(),
+        "/test": (context) => NoteScreen(),
       },
     );
   }

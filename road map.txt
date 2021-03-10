@@ -1,0 +1,16 @@
+Notetastick
+
+Main Page: 
+ - Grid
+ - Add button: circle
+ - Color themes: 
+  + primary color: #F4CE6A (c2)
+  + accent color: #FF6666 (c1)
+  + text color: Colors.black
+  + note color: white (c4)
+ - Fonts:
+  + Header: Bebas Neue
+  + Content: Lora
+ - Logo
+
+
