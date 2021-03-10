@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:notetastic/screens/note_screen.dart';
 
+import './server/server.dart' as server;
 import './screens/home_screen.dart';
 
 void main() {
+	server.start();
   runApp(MyApp());
 }
 
