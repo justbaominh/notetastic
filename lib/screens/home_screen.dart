@@ -1,54 +1,65 @@
 import 'package:flutter/material.dart';
+import 'package:faker/faker.dart';
 
+import '../models/note.dart';
+import '../database/db_handler.dart';
 import '../widgets/note_grid.dart';
 
-class HomeScreen extends StatelessWidget {
-  static const List<Map<String, String>> noteData = [
-    {
-      "title": "test1",
-      "content": "Minh ngu nhu bo y",
-    },
-    {
-      "title": "test2",
-      "content": "Choi LOL ngu vl",
-    },
-    {
-      "title": "test2",
-      "content": "Choi LOL ngu vl",
-    },
-    {
-      "title": "test2",
-      "content": "Choi LOL ngu vl",
-    },
-    {
-      "title": "test2",
-      "content": "Choi LOL ngu vl",
-    },
-    {
-      "title": "test2",
-      "content": "Choi LOL ngu vl",
-    },
-    {
-      "title": "test2",
-      "content": "Choi LOL ngu vl",
-    },
-    {
-      "title": "test2",
-      "content": "Choi LOL ngu vl",
-    },
-  ];
+class HomeScreen extends StatefulWidget {
+  final dbHandler = DbHandler();
+
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  List<Note> noteData = [];
+  var isLoading = false;
+
+  @override
+  void initState() {
+    super.initState();
+    widget.dbHandler.getNotes().then((data) {
+      setState(() {
+        data.forEach((x) {
+          final fetchedNote = Note(
+            title: x.title,
+            content: x.content,
+          );
+          noteData.add(fetchedNote);
+        });
+        isLoading = false;
+      });
+    });
+		print(noteData);
+  }
+
+  void _addNote() {
+    final faker = Faker();
+    final newNote = Note(
+      title: faker.person.firstName(),
+      content: faker.lorem.sentence(),
+    );
+    setState(() {
+      noteData.add(newNote);
+    });
+  }
+
+  void _deleteNote(String id) {
+    setState(() {
+      noteData.removeWhere((note) => note.id == id);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: NoteGrid(noteData),
-      // floatingActionButton: FloatingActionButton(
-
-      //   onPressed: null,
-      //   child: Icon(Icons.add),
-      //   // backgroundColor: Theme.of(context).
-      //   backgroundColor: Color(0xFFFF6666),
-      // )
+      body: isLoading
+          ? Center(child: CircularProgressIndicator())
+          : NoteGrid(
+              noteData: noteData,
+              deleteNote: _deleteNote,
+            ),
       floatingActionButton: Container(
         width: 75.0,
         height: 75.0,
@@ -62,7 +73,7 @@ class HomeScreen extends StatelessWidget {
             color: Colors.white,
             size: 40,
           ),
-          onPressed: () {},
+          onPressed: _addNote,
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,

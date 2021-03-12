@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:notetastic/screens/note_screen.dart';
+import 'package:notetastic/screens/note_edit_screen.dart';
 
 import './server/server.dart' as server;
 import './screens/home_screen.dart';
@@ -15,13 +15,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Notetastic',
+			debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: Color(0xFFF4CE6A),
+				accentColor: Color(0xFFFF6666),
       ),
       home: HomeScreen(),
       routes: {
         "/hs": (context) => HomeScreen(),
-        "/test": (context) => NoteScreen(),
+        "/test": (context) => NoteEditScreen(),
       },
     );
   }
