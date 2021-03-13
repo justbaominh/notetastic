@@ -20,18 +20,18 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     widget.dbHandler.getNotes().then((data) {
-      setState(() {
-        data.forEach((x) {
-          final fetchedNote = Note(
-            title: x.title,
-            content: x.content,
-          );
-          noteData.add(fetchedNote);
-        });
-        isLoading = false;
-      });
+			print(data);
+      // setState(() {
+      //   data.forEach((x) {
+      //     final fetchedNote = Note(
+      //       title: x.title,
+      //       content: x.content,
+      //     );
+      //     noteData.add(fetchedNote);
+      //   });
+      //   isLoading = false;
+      // });
     });
-		print(noteData);
   }
 
   void _addNote() {
