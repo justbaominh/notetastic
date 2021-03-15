@@ -5,10 +5,11 @@ class NoteEditScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Note Screen'),
+        title: const Text('Note Screen'),
       ),
       body: Container(
-        child: TextField(
+        height: double.infinity,
+        child: const TextField(
           maxLines: null,
           expands: true,
         ),

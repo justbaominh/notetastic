@@ -1,41 +1,21 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:faker/faker.dart';
 
 import '../models/note.dart';
-import '../database/db_handler.dart';
 import '../widgets/note_grid.dart';
 
 class HomeScreen extends StatefulWidget {
-  final dbHandler = DbHandler();
-
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
   List<Note> noteData = [];
-  var isLoading = false;
-
-  @override
-  void initState() {
-    super.initState();
-    widget.dbHandler.getNotes().then((data) {
-			print(data);
-      // setState(() {
-      //   data.forEach((x) {
-      //     final fetchedNote = Note(
-      //       title: x.title,
-      //       content: x.content,
-      //     );
-      //     noteData.add(fetchedNote);
-      //   });
-      //   isLoading = false;
-      // });
-    });
-  }
+  bool isLoading = false;
 
   void _addNote() {
-    final faker = Faker();
+    const faker = Faker();
     final newNote = Note(
       title: faker.person.firstName(),
       content: faker.lorem.sentence(),
@@ -55,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: isLoading
-          ? Center(child: CircularProgressIndicator())
+          ? const Center(child: CircularProgressIndicator())
           : NoteGrid(
               noteData: noteData,
               deleteNote: _deleteNote,
@@ -63,17 +43,17 @@ class _HomeScreenState extends State<HomeScreen> {
       floatingActionButton: Container(
         width: 75.0,
         height: 75.0,
-        margin: EdgeInsets.only(bottom: 10),
+        margin: const EdgeInsets.only(bottom: 10),
         child: RawMaterialButton(
-          fillColor: Color(0xFFFF6666),
-          shape: CircleBorder(),
+          fillColor: const Color(0xFFFF6666),
+          shape: const CircleBorder(),
           elevation: 0.0,
-          child: Icon(
+          onPressed: _addNote,
+          child: const Icon(
             Icons.add,
             color: Colors.white,
             size: 40,
           ),
-          onPressed: _addNote,
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,

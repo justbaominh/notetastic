@@ -6,7 +6,7 @@ class NoteGrid extends StatelessWidget {
   final List<Note> noteData;
   final Function(String id) deleteNote;
 
-  NoteGrid({this.noteData, this.deleteNote});
+  const NoteGrid({this.noteData, this.deleteNote});
 
   @override
   Widget build(BuildContext context) {

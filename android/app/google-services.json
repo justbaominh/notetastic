@@ -1,0 +1,40 @@
+{
+	"project_info": {
+		"project_number": "952017500817",
+		"firebase_url": "https://notetastic-5959f-default-rtdb.europe-west1.firebasedatabase.app",
+		"project_id": "notetastic-5959f",
+		"storage_bucket": "notetastic-5959f.appspot.com"
+	},
+	"client": [
+		{
+			"client_info": {
+				"mobilesdk_app_id": "1:952017500817:android:ff6585ce7cb6c624681d30",
+				"android_client_info": {
+					"package_name": "com.wibu.notetastic"
+				}
+			},
+			"oauth_client": [
+				{
+					"client_id": "952017500817-hbfq0julo3nbk135mk54ef0ebbi7p0sk.apps.googleusercontent.com",
+					"client_type": 3
+				}
+			],
+			"api_key": [
+				{
+					"current_key": "AIzaSyDe4beyG9mEN5kHWTdkR8W1rs6F1SNzvc8"
+				}
+			],
+			"services": {
+				"appinvite_service": {
+					"other_platform_oauth_client": [
+						{
+							"client_id": "952017500817-hbfq0julo3nbk135mk54ef0ebbi7p0sk.apps.googleusercontent.com",
+							"client_type": 3
+						}
+					]
+				}
+			}
+		}
+	],
+	"configuration_version": "1"
+}
